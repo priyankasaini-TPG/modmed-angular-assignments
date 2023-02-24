@@ -1,0 +1,16 @@
+
+    <div class="container" [ngClass]="'bgColor'">
+        <h2>Login Here!</h2>
+    
+        <label>Username:</label><br>
+        <input type="text" [(ngModel)]="username">
+        
+        <br><br>
+    
+        <label>Password:</label><br>
+        <input type="text" [(ngModel)]="password">
+        
+        <br>
+        <button (click)="onClick()">Submit</button>
+    </div>
+
