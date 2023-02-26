@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { UserService } from './services/user.service';
 
 })
 export class AppComponent implements DoCheck {
-  title = 'Assignment1';
   appShow?: boolean;
   
   constructor(private user: UserService){

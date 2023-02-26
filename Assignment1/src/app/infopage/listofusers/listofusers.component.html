@@ -1,8 +1,6 @@
 <div class="container">
     <h1>List of all the users added</h1>
-    <div *ngFor="let user of users">
-        <h4>{{ user }}</h4>
+    <div *ngFor="let user of users; let i= index">
+        <h4>{{ i+1 + ". " + user }}</h4>
     </div>
-
-    
 </div>

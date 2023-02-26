@@ -1,12 +1,13 @@
-<div *ngIf="appShow; else my">
+<div *ngIf="appShow; else info">
 <app-login></app-login>
 </div>
 
-<ng-template #my>
+<ng-template #info>
     <div>
         <app-infopage></app-infopage>
     </div>
 </ng-template>
+
 
 
 

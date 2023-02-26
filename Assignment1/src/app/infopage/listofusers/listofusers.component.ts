@@ -1,12 +1,12 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck} from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-listofusers',
   templateUrl: './listofusers.component.html',
   styleUrls: ['./listofusers.component.css'],
-  // providers: [UserService]
 })
+
 export class ListofusersComponent implements DoCheck {
   users: string[] = [];
   loginItem: string = "";

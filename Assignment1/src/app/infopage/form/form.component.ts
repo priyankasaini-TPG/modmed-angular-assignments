@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
@@ -6,7 +6,6 @@ import { UserService } from 'src/app/services/user.service';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-  // providers: [UserService]
 })
 
 export class FormComponent {
@@ -37,7 +36,5 @@ export class FormComponent {
     this.user.userAdded(this.Name);
     console.log(this.user.usersArray);
   }
-
-
 
 }

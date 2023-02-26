@@ -1,16 +1,18 @@
 
     <div class="container" [ngClass]="'bgColor'">
+        <h5 *ngIf="message">You entered wrong username or password.</h5>
         <h2>Login Here!</h2>
     
-        <label>Username:</label><br>
+        <label>Username:</label>
         <input type="text" [(ngModel)]="username">
         
-        <br><br>
+        <br>
     
-        <label>Password:</label><br>
+        <label>Password:</label>
         <input type="text" [(ngModel)]="password">
         
         <br>
+
         <button (click)="onClick()">Submit</button>
     </div>
 
