@@ -1,11 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  // providers: [UserService]
 })
+
 export class FormComponent {
 
   Name: string  = "";
@@ -14,6 +17,10 @@ export class FormComponent {
   Specialization: string = "";
 
   @ViewChild('myform') form?: NgForm;
+
+  constructor(private user: UserService){
+
+  }
 
   onSubmit(){
     console.log(this.form);
@@ -25,5 +32,21 @@ export class FormComponent {
     this.defaultDegree = "";
     this.Specialization = "";
   }
+
+  addUser(){
+    this.user.userAdded(this.Name);
+    console.log(this.user.usersArray);
+  }
+
+
+
+  // @Output() onclickEvent = new EventEmitter<string>();
+
+  // onClicked(input: HTMLInputElement){
+  //   this.onclickEvent.emit(input.value)
+
+  //   console.log(input);
+  
+
 
 }

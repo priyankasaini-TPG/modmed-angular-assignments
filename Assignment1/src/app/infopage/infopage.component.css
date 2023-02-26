@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: center;
+    border: 3px solid red;
+}
+
+app-form {
+    border: 2px solid green;
+}
+
+app-listofusers{
+    border: 3px solid yellow;
+}

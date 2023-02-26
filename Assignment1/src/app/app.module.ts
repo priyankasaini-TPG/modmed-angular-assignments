@@ -7,7 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { InfopageComponent } from './infopage/infopage.component';
 import { ListofusersComponent } from './infopage/listofusers/listofusers.component';
 import { FormComponent } from './infopage/form/form.component';
+import { RouterModule, Routes } from '@angular/router';
 
+
+const appRoute: Routes = [
+  {path:"infopage", component: InfopageComponent}
+]
 
 @NgModule({
   declarations: [
@@ -19,7 +24,8 @@ import { FormComponent } from './infopage/form/form.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    [RouterModule.forRoot(appRoute)]
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,7 +29,7 @@
             <label for="specialization">Any Other specialization</label>
             <input type="text" id="specialization" name="specialization" [(ngModel)]="Specialization">
            
-            <input type="submit" value="Save" id="btn" [disabled]="!myform.valid">
+            <input type="submit" value="Save" id="btn" [disabled]="!myform.valid" (click)="addUser()">
             <input type="button" value="Cancel" id="btn" (click)="clearAll()" >
         </div>
     </form>
