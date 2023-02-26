@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -8,11 +8,15 @@ import { UserService } from './services/user.service';
   providers: [UserService]
 
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements DoCheck {
   title = 'Assignment1';
   appShow?: boolean;
+  
+  constructor(private user: UserService){
 
-  ngOnInit(){
-    // this.appShow = const show;
+  }
+
+  ngDoCheck(){
+    this.appShow = this.user.userShow;
   }
 }

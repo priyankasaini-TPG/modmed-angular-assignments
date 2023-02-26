@@ -1,8 +1,10 @@
 export class UserService{
 
-    usersArray: string[] = ["hariom","priyanka"];
+    usersArray: string[] = [];
+    userShow: boolean = true;
+
     loginUserName: string = "Priyankasaini";
-    password: string = "1234";
+    loginPassword: string = "12345";
 
     userAdded(item: string){
         this.usersArray.push(item);

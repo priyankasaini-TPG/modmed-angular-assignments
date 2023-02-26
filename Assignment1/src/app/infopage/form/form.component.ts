@@ -40,13 +40,4 @@ export class FormComponent {
 
 
 
-  // @Output() onclickEvent = new EventEmitter<string>();
-
-  // onClicked(input: HTMLInputElement){
-  //   this.onclickEvent.emit(input.value)
-
-  //   console.log(input);
-  
-
-
 }

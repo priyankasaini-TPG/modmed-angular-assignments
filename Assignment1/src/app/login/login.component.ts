@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,23 @@ import { Component, Input } from '@angular/core';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  show?: boolean;
 
-  loginUserName: string = "Priyankasaini";
-  loginPassword: string = "12345";
+  constructor(private user: UserService){
 
-  // show: boolean = true;
+  }
 
   onClick(){
     console.log(this.username);
     console.log(this.password);
 
-    // if(this.username === this.loginUserName && this.password === this.loginPassword){
-    //   this.show = false;
+    if(this.username === this.user.loginUserName && this.password === this.user.loginPassword){
+      this.user.userShow = false;
     }
+    else{
+      console.log("You entered wrong Username or Password!")
+    }
+
   }
+}
 
