@@ -1,0 +1,29 @@
+.container {
+    background-color: #E7EAF6;
+    width: 400px;
+    padding: 100px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    
+}
+
+h1 {
+    color: #113F67;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 300px;
+    justify-content: center;
+}
+
+.input-button {
+    background-color: #113F67;
+    color: #E7EAF6;
+}
