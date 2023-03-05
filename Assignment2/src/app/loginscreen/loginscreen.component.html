@@ -1,8 +1,16 @@
-<div class="container">
+<div class="container" *ngIf="!next; else my">
     <h1>Login</h1>
-    <form class="form-container" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+    <form class="form-container" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" >
         <input type="text" placeholder="Username" class="input-form" ngModel name="username">
         <input type="password" placeholder="Password" class="input-form" ngModel name="password">
         <input type="submit" value="Submit" class="input-button">
     </form>
+
 </div>
+
+    <ng-template #my>
+        <router-outlet></router-outlet>
+
+    </ng-template>
+
+

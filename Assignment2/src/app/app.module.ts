@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { LoginscreenComponent } from './loginscreen/loginscreen.component';
 import { HomescreenComponent } from './loginscreen/homescreen/homescreen.component';
 import { SettingsComponent } from './loginscreen/settings/settings.component';
+import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginscreenComponent,
     HomescreenComponent,
-    SettingsComponent
+    SettingsComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

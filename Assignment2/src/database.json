@@ -1,0 +1,14 @@
+{
+  "signup": [
+    {
+      "username": "PriyankaSaini",
+      "password": "12345",
+      "id": 1
+    },
+    {
+      "username": "Anurag",
+      "password": "0987",
+      "id": 2
+    }
+  ]
+}
