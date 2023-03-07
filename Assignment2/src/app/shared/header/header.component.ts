@@ -21,6 +21,9 @@ export class HeaderComponent implements AfterContentChecked{
     this.adminName = this.signupService.adminName;
   }
 
+  logout(){
+    this.signupService.logoutUser();
+  }
   // ngOnInit(): void{
   //   this.menuType = this.signupService.userType;
   //   this.router.events.subscribe((val: any) => {

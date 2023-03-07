@@ -21,10 +21,10 @@ const appRoute: Routes = [
         component: HomescreenComponent,
         // canActivate: [LoginauthGuard]
     },
-    {
-        path: "admin-signup",
-        component: SignupComponent
-    },
+    // {
+    //     path: "admin-signup",
+    //     component: SignupComponent
+    // },
     {
         path: "admin-setting",
         component: SettingComponent,

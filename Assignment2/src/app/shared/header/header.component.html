@@ -4,22 +4,19 @@
         <h3>Product-List App</h3>
     </div>
 
-    <div [ngSwitch]="menuType">
-        <ul *ngSwitchCase="'user'">
-            <li routerLink="/homescreen">Home</li>
-            <li routerLink="/admin-signup">Sign-up</li>
-        </ul>
-
-        <ul  *ngSwitchCase="'admin'">
+    <!-- <div [ngSwitch]="menuType"> -->
+        <ul *ngIf="menuType">
             <li>{{ adminName }}</li>
+            <li routerLink="/sign-up" (click)="logout()">Logout</li>
         </ul>
 
-        <ul *ngSwitchDefault >
+       
+        <!-- <ul *ngSwitchCase="'admin'">
+            <li>{{ adminName }}</li>
+            <li routerLink="/sign-up" (click)="logout()">Logout</li>
+        </ul> -->
 
-        </ul>
-
-    </div>
-
-
-
+        <!-- <ul *ngSwitchDefault >
+        </ul> -->
+    
 </div>

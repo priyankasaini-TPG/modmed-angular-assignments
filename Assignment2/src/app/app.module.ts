@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './shared/app-routing.module';
 import { SettingComponent } from './settings/setting/setting.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import { HamburgerComponent } from './shared/hamburger/hamburger.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
     SignupComponent,
     HomescreenComponent,
     SettingComponent,
-    WelcomeScreenComponent
+    WelcomeScreenComponent,
+    HamburgerComponent
   ],
   imports: [
     BrowserModule,

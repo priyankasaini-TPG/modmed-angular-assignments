@@ -92,5 +92,12 @@ export class SignupService {
     });
 }
 
+logoutUser(){
+  localStorage.removeItem(`signup-${this.userType}`);
+  this.router.navigate(['/sign-up']);
+  this.menuType = null;
+
+}
+
 
 }
