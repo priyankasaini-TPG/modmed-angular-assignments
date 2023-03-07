@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LoginscreenComponent } from './loginscreen/loginscreen.component';
-import { HomescreenComponent } from './loginscreen/homescreen/homescreen.component';
-import { SettingsComponent } from './loginscreen/settings/settings.component';
-import { SignupComponent } from './signup/signup.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SignupComponent } from './login/signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { HomescreenComponent } from './homescreen/homescreen.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './shared/app-routing.module';
+import { SettingComponent } from './settings/setting/setting.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginscreenComponent,
+    HeaderComponent,
+    SignupComponent,
     HomescreenComponent,
-    SettingsComponent,
-    SignupComponent
+    SettingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
     AppRoutingModule
   ],
   providers: [],

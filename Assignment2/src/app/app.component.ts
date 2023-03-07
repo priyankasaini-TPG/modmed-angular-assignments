@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SignupService } from './shared/header/services/signup.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Assignment2';
+  
+  constructor(private signupService: SignupService){
+
+  }
+
+  showHomescreen = this.signupService.showHomeScreen;
+
+
 }

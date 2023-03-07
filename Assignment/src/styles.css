@@ -1,16 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
-    margin: 0 15%;
-}
-
-.signup-container {
+    margin-left: 4%;
+    margin-right: 4%;
     text-align: center;
 }
 

@@ -1,0 +1,39 @@
+.signup-container, .login-container {
+    background-color: #E7EAF6;
+    width: 500px;
+    padding: 100px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 50px;
+    border-radius: 100px 0;
+    align-items: center;
+}
+
+h1 {
+    color: #113F67;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 300px;
+    justify-content: center;
+}
+
+.input-button {
+    background-color: #113F67;
+    color: #E7EAF6;
+}
+
+.login-container p {
+    color: red;
+    background-color: rgb(252, 222, 222);
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+}

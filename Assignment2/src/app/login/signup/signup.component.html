@@ -1,0 +1,22 @@
+<div class="signup-container" *ngIf="!showLogin">
+    <h1>Sign-UP</h1>
+    <form class="form-container" #signupForm="ngForm"  (ngSubmit)="signUp(signupForm.value)">
+        <input type="text" placeholder="Username" class="input-form" ngModel name="username">
+        <input type="password" placeholder="Password" class="input-form" ngModel name="password">
+        <input type="email" placeholder="Email" class="input-form" ngModel name="email">
+        <input type="submit" value="Sign-Up" class="input-button">
+    </form>
+    <a (click)="showLogin=true">Already have an account. Click Here.</a>
+</div>
+
+<div class="login-container" *ngIf="showLogin">
+    <p>{{ authError }}</p>
+    <h1>Login</h1>
+    <form class="form-container" #loginForm="ngForm"  (ngSubmit)="login(loginForm.value)">
+        <input type="email" placeholder="Email" class="input-form" ngModel name="email">
+        <input type="password" placeholder="Password" class="input-form" ngModel name="password">
+        <input type="submit" value="Login" class="input-button">
+    </form>
+    <a (click)="showLogin=false">Don't have an account. Click here to create.</a>
+</div>
+
