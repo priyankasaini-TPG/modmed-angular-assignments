@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SignupService } from './shared/header/services/signup.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { SignupService } from './shared/header/services/signup.service';
 })
 export class AppComponent {
   
-  constructor(private signupService: SignupService){
+  constructor(private router: Router){
 
   }
 
-  showHomescreen = this.signupService.showHomeScreen;
+  ngOnInit(){
+    this.router.navigate(['/welcome-screen']);
+  }
 
 
 }

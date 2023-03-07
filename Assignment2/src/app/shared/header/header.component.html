@@ -3,10 +3,23 @@
         <img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/data-hub-8053491-6433452.png?f=avif&w=256">
         <h3>Product-List App</h3>
     </div>
-    
 
-    <ul>
-        <li routerLink="/homescreen">Home</li>
-        <li routerLink="/admin-signup">Sign-up</li>
-    </ul>
+    <div [ngSwitch]="menuType">
+        <ul *ngSwitchCase="'user'">
+            <li routerLink="/homescreen">Home</li>
+            <li routerLink="/admin-signup">Sign-up</li>
+        </ul>
+
+        <ul  *ngSwitchCase="'admin'">
+            <li>{{ adminName }}</li>
+        </ul>
+
+        <ul *ngSwitchDefault >
+
+        </ul>
+
+    </div>
+
+
+
 </div>

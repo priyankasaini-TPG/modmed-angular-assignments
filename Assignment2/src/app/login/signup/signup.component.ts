@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ILogin, ISignUp } from 'src/app/shared/data-types';
 import { SignupService } from 'src/app/shared/header/services/signup.service';
 
@@ -8,10 +9,12 @@ import { SignupService } from 'src/app/shared/header/services/signup.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit{
+
   showLogin: boolean = false;
   authError: string = '';
 
-  constructor(private signupService: SignupService){
+
+  constructor(private signupService: SignupService, private router: Router){
 
   }
 
@@ -35,5 +38,7 @@ export class SignupComponent implements OnInit{
       }
     });
   }
+
+  
 
 }

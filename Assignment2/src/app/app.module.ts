@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './shared/app-routing.module';
 import { SettingComponent } from './settings/setting/setting.component';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SettingComponent } from './settings/setting/setting.component';
     HeaderComponent,
     SignupComponent,
     HomescreenComponent,
-    SettingComponent
+    SettingComponent,
+    WelcomeScreenComponent
   ],
   imports: [
     BrowserModule,
