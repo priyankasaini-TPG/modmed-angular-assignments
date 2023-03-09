@@ -1,0 +1,28 @@
+<div class="create-container">
+    <p>{{ successMessage }}</p>
+    <h1>Create Product Here!</h1>
+    <form class="form-container" [formGroup]="createProductForm" (ngSubmit)="saveProduct()">
+        <div>
+            <input type="text" placeholder="Enter Product Name.." class="input-form" formControlName="pname">
+            <input type="text" placeholder="Enter Expiry Date.." class="input-form" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" formControlName="expiry" >
+        </div>
+        <div>
+            <input type="number" placeholder="No. of items in th stock.." class="input-form" formControlName="stock">
+            <input type="text" placeholder="Enter the Heading.." class="input-form" formControlName="heading">
+        </div>
+        <div>
+            <input type="text" placeholder="Enter the Subheading.." class="input-form" formControlName="subheading">
+            <input type="text" placeholder="Tags.." class="input-form" formControlName="tags">
+        </div>
+        <textarea type="textarea" placeholder="Enter the Product Description.." class="textarea-form" formControlName="description"></textarea>
+        <div>
+            <input type="text" placeholder="Minimum days to deliver.." class="input-form" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" formControlName="mindays" >
+            <input type="text" placeholder="Maximum days to deliver.." class="input-form" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" formControlName="maxdays">
+        </div>
+        
+        <div>
+            <input type="submit" value="Save" class="input-button" [disabled]="!createProductForm.valid">
+            <input type="button" value="Cancel" class="input-button" (click)="onCancel()">
+        </div>
+    </form>
+</div>

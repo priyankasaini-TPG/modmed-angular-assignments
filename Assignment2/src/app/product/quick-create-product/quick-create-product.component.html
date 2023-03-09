@@ -1,0 +1,16 @@
+<div class="quick-create-container">
+    <p>{{ successMessage }}</p>
+    <h2>Are You In Hurry?</h2>
+    <h1>Then, Quickly Create Product Here!</h1>
+    <form class="form-container" #quickCreateForm="ngForm" (ngSubmit)="saveProduct(quickCreateForm.value)">
+        
+        <input type="text" placeholder="Enter Product Name.." class="input-form" name="pname" required ngModel maxlength="30">
+        <input type="text" placeholder="Enter Expiry Date.." class="input-form" onfocus="(this.type = 'date')" onblur="(this.type = 'text')" name="expiry" required ngModel>
+        <input type="number" placeholder="No. of items in th stock.." class="input-form" name="stock" required ngModel min="0">
+            
+        <div>
+            <input type="submit" value="Save" class="input-button" [disabled]="!quickCreateForm.valid">
+            <input type="button" value="Cancel" class="input-button" (click)="onCancel()">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,51 @@
+<div class="home-container">
+    <h1>List of all the Products</h1>
+    <p>{{ productDeleteMessage }}</p>
+    <div class="searchbar">
+        <input type="text" class="searchbox" placeholder="Search here..">
+        <input type="text" class="searchbox" placeholder="Search here through RXJX..">
+        <ng-container *ngIf="isAnyCheckboxTicked || products.length != 0">
+            <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete Products</button>
+        </ng-container>
+    </div>
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>S No.</th>
+                <th></th>
+                <th>PRODUCT NAME</th>
+                <th>HEADING</th>
+                <th>SUBHEADING</th>
+                <th>
+                    STOCK
+                    <img (click)="descendingOrder()" src="https://cdn.iconscout.com/icon/free/png-512/sort-ascending-3602979-3005186.png?f=avif&w=256">
+                    <img (click)="ascendingOrder()" src="https://cdn.iconscout.com/icon/free/png-512/sort-descending-3602980-3005187.png?f=avif&w=256">
+                </th>
+                <th>EXPIRY DATE</th>
+                <th>DESCRIPTION</th>
+                <th>TAGS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of products; index as i">
+                <td class="sno">{{ i+1 }}.</td>
+                <td><input type="checkbox" class="checkbox" (change)="checkboxValueChanged($event, product.id)"></td>
+                <td routerLink="/product-details">{{ product.pname }}</td>
+                <td>{{ product.heading }}</td>
+                <td>{{ product.subheading }}</td>
+                <td>{{ product.stock }}</td>
+                <td class="nowrap">{{ product.expiry }}</td>
+                <td class="description">{{ product.description }}</td>
+                <td>{{ product.tags }}</td>
+                <td>
+                    <button class="edit" routerLink="/edit-product">Edit</button>
+                    <button class="delete" (click)="removeProduct(product.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

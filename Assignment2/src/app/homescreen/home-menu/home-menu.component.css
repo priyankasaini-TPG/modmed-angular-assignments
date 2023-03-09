@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    color: #113F67;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* ng-container {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.deleteButton {
+    margin-left: 95px;
+    /* right: 0; */
+    padding: 7px 10px;
+    background-color: rgb(196, 3, 3);
+    height: 30px;
+    border-radius: 1px;
+    color: #E7EAF6;
+    border: none;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+img {
+    height: 20px;
+    width: 20px;
+}
+
+.searchbar {
+    display: flex;
+
+}
+
+.searchbox {
+    width: 250px;
+    height: 30px;
+    border: 2px solid #113F67;
+    background-color: #E7EAF6;
+    border-radius: 15px;
+    margin-bottom: 4px;
+    padding: 10px;
+    margin-left: 4px;
+    font-size: 14px;
+}
