@@ -1,5 +1,6 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { elementAt } from 'rxjs';
 import { ProductService } from 'src/app/product/product.service';
 import { IProduct } from 'src/app/shared/data-types';
 
@@ -16,6 +17,9 @@ export class HomeMenuComponent implements OnInit {
   checkboxTickedidArray: string[] = [];
   productDeleteMessage = '';
   showDetails: boolean = false;
+  searchkeyWord: string = '';
+  searchArray;
+
 
 
   constructor(private productService: ProductService, private router: Router){
@@ -31,6 +35,8 @@ export class HomeMenuComponent implements OnInit {
     // console.log(this.products);
     // console.log(this.productService.productList)
   }
+
+
 
   checkboxValueChanged(element, id: number){
     console.log(element);
@@ -96,29 +102,59 @@ export class HomeMenuComponent implements OnInit {
     //   console.log(product.stock);
     //   if()
     // })
-    let min = 0;
-    for(let i=0; i<this.products.length-1; i++){
-      for(let j=i+1; j<this.products.length-1; j++){
-        if(this.products[i].stock < this.products[j].stock){
-          let temp = this.products[i];
-        this.products[i] = this.products[i+1];
-        this.products[i+1] = temp;
-        }
+    // let min = 0;
+    // for(let i=0; i<this.products.length-1; i++){
+    //   for(let j=i+1; j<this.products.length-1; j++){
+    //     if(this.products[i].stock < this.products[j].stock){
+    //       let temp = this.products[i];
+    //     this.products[i] = this.products[i+1];
+    //     this.products[i+1] = temp;
+    //     }
+    //   }
+    // }
+
+    let i = 0;
+    while (i < this.products.length) {
+      let j = i + 1;
+      while (j < this.products.length) {
+           
+          if (this.products[j].stock > this.products[i].stock) {
+              var temp = this.products[i].stock;
+              this.products[i].stock = this.products[j].stock;
+              this.products[j].stock = temp;
+          }
+          j++;
       }
-    }
+      i++;
+  }
     console.log(this.products);
   }
 
+
   ascendingOrder(){
-    for(let i=0; i<this.products.length-1; i++){
-      for(let j=i+1; j<this.products.length-1; j++){
-        if(this.products[i].stock > this.products[j].stock){
-          let temp = this.products[i];
-        this.products[i] = this.products[i+1];
-        this.products[i+1] = temp;
-        }
+    // for(let i=0; i<this.products.length-1; i++){
+    //   for(let j=i+1; j<this.products.length-1; j++){
+    //     if(this.products[i].stock > this.products[j].stock){
+    //       let temp = this.products[i];
+    //     this.products[i] = this.products[i+1];
+    //     this.products[i+1] = temp;
+    //     }
+    //   }
+    // }
+    let i = 0;
+    while (i < this.products.length) {
+      let j = i + 1;
+      while (j < this.products.length) {
+           
+          if (this.products[j].stock < this.products[i].stock) {
+              var temp = this.products[i].stock;
+              this.products[i].stock = this.products[j].stock;
+              this.products[j].stock = temp;
+          }
+          j++;
       }
-    }
+      i++;
+  }
     console.log(this.products)
   }
 
@@ -131,7 +167,39 @@ export class HomeMenuComponent implements OnInit {
 
     }
   }
+
+  search(){
+    let filteredProducts: IProduct[] = [];
+
+    console.log(this.products);
+    this.products.forEach(element => {
+      if(element.pname.includes(this.searchkeyWord) || 
+      element.heading.includes(this.searchkeyWord) || 
+      element.subheading.includes(this.searchkeyWord) || 
+      element.tags.indexOf(this.searchkeyWord) >= 0){
+        console.warn(element.pname.includes(this.searchkeyWord))
+      
+        console.warn(element.heading.includes(this.searchkeyWord))
+      console.warn(element.subheading.includes(this.searchkeyWord)) 
+      console.warn(element.tags.indexOf(this.searchkeyWord))
+      
+        console.log("found");
+        filteredProducts.push(element);
+      }
+    });
+    console.log(filteredProducts);
+    this.searchArray = filteredProducts;
   
+  
+  }
+  
+  // resetFiltered(){
+  //   if(!this.searchkeyWord){
+  //     this.filteredProducts.forEach(element => {
+  //       this.filteredProducts.pop();
+  //     })
+ //   }
+ // }
 
 
 

@@ -49,4 +49,13 @@ export class ProductService {
       this.isDeletedError.emit(false);
     });
   }
+
+  getProduct(id: string){
+    return this.http.get<IProduct>(`http://localhost:3000/products/${id}`);
+  }
+
+  updateProduct(product: IProduct, id: string){
+    return this.http.put(`http://localhost:3000/products/${id}`,product);
+  }
+
 }

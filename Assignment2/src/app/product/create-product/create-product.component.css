@@ -34,6 +34,30 @@ h1 {
     margin-right: 3px;
 }
 
+.tags .input-form {
+    margin-bottom: 4px;
+
+}
+
+.subheading {
+    width: 505px;
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+}
+
+span {
+    font-size: 13px;
+    background-color: #A2A8D3;
+    margin-bottom: 20px;
+    padding: 7px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #113F67;
+}
+
 .input-button {
     border: none;
     height: 40px;
@@ -60,3 +84,6 @@ h1 {
 .input-button:hover[type="button"] {
     background-color: #fd2759;
 }
+
+
+

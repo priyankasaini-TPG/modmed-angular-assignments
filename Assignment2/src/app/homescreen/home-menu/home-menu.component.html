@@ -2,7 +2,8 @@
     <h1>List of all the Products</h1>
     <p>{{ productDeleteMessage }}</p>
     <div class="searchbar">
-        <input type="text" class="searchbox" placeholder="Search here..">
+        <input type="text" class="searchbox" placeholder="Search here.." [(ngModel)]="searchkeyWord">
+        <button class="button-icon" (click)="search()">Search</button>
         <input type="text" class="searchbox" placeholder="Search here through RXJX..">
         <ng-container *ngIf="isAnyCheckboxTicked || products.length != 0">
             <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete Products</button>
@@ -30,11 +31,11 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody *ngIf="!searchkeyWord">
             <tr *ngFor="let product of products; index as i">
                 <td class="sno">{{ i+1 }}.</td>
                 <td><input type="checkbox" class="checkbox" (change)="checkboxValueChanged($event, product.id)"></td>
-                <td routerLink="/product-details">{{ product.pname }}</td>
+                <td routerLink="/product-details/{{product.id}}">{{ product.pname }}</td>
                 <td>{{ product.heading }}</td>
                 <td>{{ product.subheading }}</td>
                 <td>{{ product.stock }}</td>
@@ -42,10 +43,31 @@
                 <td class="description">{{ product.description }}</td>
                 <td>{{ product.tags }}</td>
                 <td>
-                    <button class="edit" routerLink="/edit-product">Edit</button>
+                    <button class="edit" routerLink="/edit-product/{{product.id}}">Edit</button>
                     <button class="delete" (click)="removeProduct(product.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
+
+        <tbody *ngIf="searchkeyWord">
+            <tr *ngFor="let product of searchArray; index as i">
+                <td class="sno">{{ i+1 }}.</td>
+                <td><input type="checkbox" class="checkbox"></td>
+                <td routerLink="/product-details/{{product.id}}">{{ product.pname }}</td>
+                <td>{{ product.heading }}</td>
+                <td>{{ product.subheading }}</td>
+                <td>{{ product.stock }}</td>
+                <td class="nowrap">{{ product.expiry }}</td>
+                <td class="description">{{ product.description }}</td>
+                <td>{{ product.tags }}</td>
+                <td>
+                    <button class="edit" routerLink="/edit-product/{{product.id}}">Edit</button>
+                    <button class="delete" (click)="removeProduct(product.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+        
+        
     </table>
 </div>

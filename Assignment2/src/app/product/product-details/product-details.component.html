@@ -1,18 +1,18 @@
-<div>
-    <button>Edit</button>
-    <button>Delete</button>
+<div class="button">
+    <button routerLink="/edit-product/{{product.id}}">Edit</button>
+    <button (click)="removeProduct(product.id)">Delete</button>
 </div>
 
 <div class="details-container">
     <h1>Product Details</h1>
     <div>
-        <p><span>1. Product Name:</span> pname</p>
-        <p><span>2. Heading:</span> pname</p>
-        <p><span>3. Subheading:</span> pname</p>
-        <p><span>4. Product Description:</span> pname</p>
-        <p><span>5. Expiry Date:</span> pname</p>
-        <p><span>6. No. of Items available in Stock:</span> pname</p>
-        <p><span>7. Tags:</span> pname</p>
+        <p><span>1. Product Name:</span>{{product.pname}}</p>
+        <p><span>2. Heading:</span>{{product.heading}}</p>
+        <p><span>3. Subheading:</span>{{product.subheading}}</p>
+        <p><span>4. Product Description:</span>{{product.description}}</p>
+        <p><span>5. Expiry Date:</span>{{product.expiry}}</p>
+        <p><span>6. No. of Items available in Stock:</span>{{product.stock}}</p>
+        <p><span>7. Tags:</span>{{product.tags}}</p>
     </div>
     
 

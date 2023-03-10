@@ -1,6 +1,7 @@
 import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IProduct } from 'src/app/shared/data-types';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,8 +14,11 @@ export class CreateProductComponent implements OnInit {
   createProductForm : FormGroup;
   issavebuttonDisable: boolean;
   successMessage: string = '';
+  addInputTagButtonClicked: number = 0;
+  productId: string;
+  productData: undefined | IProduct;
 
-  constructor(private productService: ProductService, private router: Router){
+  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute){
 
   }
 
@@ -26,26 +30,32 @@ export class CreateProductComponent implements OnInit {
         stock: new FormControl(null, [Validators.required, Validators.min(0)]),
         heading: new FormControl(null, Validators.maxLength(150)),
         subheading: new FormControl(null, Validators.maxLength(160)),
-        tags: new FormControl(null),
+        tags: new FormArray([
+          new FormControl(null)
+        ]),
         description: new FormControl(null, Validators.maxLength(250)),
         mindays: new FormControl(null),
         maxdays: new FormControl(null)
       }
     )
 
+    this.productId = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.productId);
+    this.productService.getProduct(this.productId).subscribe((data) => {
+      console.log(data);
+      this.productData = data;
+    })
+
+
     
     
   }
 
-  // ngAfterViewChecked(){
-  //   if( this.createProductForm.status === 'VALID' )
-  //       this.issavebuttonDisable = false;
-  //   else 
-  //       this.issavebuttonDisable = true;
-  // }
+
 
   saveProduct(){
-    console.log(this.createProductForm);
+    if(this.productId == null){
+      console.log(this.createProductForm);
     this.productService.createProduct(this.createProductForm.value);
     this.createProductForm.reset();
     // this.successMessage = this.productService.createProductMessage;
@@ -58,6 +68,11 @@ export class CreateProductComponent implements OnInit {
         this.successMessage = '';
       },3000)
     })
+    }
+    else {
+      this.editProduct(this.createProductForm.value, this.productId);
+    }
+    
   }
 
   onCancel(){
@@ -85,4 +100,31 @@ export class CreateProductComponent implements OnInit {
   //   return null;
   // }
 
+
+  addInputTags(){
+    if(this.addInputTagButtonClicked < 9){
+      (<FormArray>this.createProductForm.get('tags')).push(new FormControl(null));
+      this.addInputTagButtonClicked++;
+    }
+    else{
+      this.successMessage = "No More Tags can be added."
+      setTimeout(() => {
+        this.successMessage = "";
+      },2000);
+    }
+    
+  }
+  editProduct(data: IProduct, id: string){
+    console.log(data);
+    this.productService.updateProduct(data, id).subscribe((result) => {
+      if(result){
+        this.successMessage = "Product has been updated successfully :-)";
+      }
+      setTimeout(() => {
+        this.successMessage = "";
+      }, 3000);
+    })
+    this.productId = null;
+    
+  }
 }

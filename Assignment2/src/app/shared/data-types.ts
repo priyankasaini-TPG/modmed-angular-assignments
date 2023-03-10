@@ -13,8 +13,11 @@ export interface IProduct{
     pname: string,
     expiry: Date,
     stock: number,
-    // heading: string,
-    // subheading: string,
-    // tags: string,
-
+    heading: string,
+    subheading: string,
+    tags: string[],
+    description: string,
+    mindays: Date,
+    maxdays: Date,
+    id: string
 }
