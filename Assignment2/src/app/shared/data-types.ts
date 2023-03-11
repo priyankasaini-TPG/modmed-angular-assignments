@@ -21,3 +21,11 @@ export interface IProduct{
     maxdays: Date,
     id: string
 }
+
+export interface IModes{
+    edit: boolean,
+    create: boolean,
+    delete: boolean,
+    search: boolean,
+    id: string
+}

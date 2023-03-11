@@ -1,7 +1,7 @@
 import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProduct } from 'src/app/shared/data-types';
+import { IModes, IProduct } from 'src/app/shared/data-types';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -11,18 +11,24 @@ import { ProductService } from '../product.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  createProductForm : FormGroup;
+  createProductForm: FormGroup;
   issavebuttonDisable: boolean;
   successMessage: string = '';
   addInputTagButtonClicked: number = 0;
   productId: string;
   productData: undefined | IProduct;
+  modes: IModes;
+  editMode: boolean = true;
+  createMode: boolean = true;;
+  searchMode: boolean = false;
+  deleteMode: boolean = true;;
 
-  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute){
+
+  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.createProductForm = new FormGroup(
       {
         pname: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
@@ -41,42 +47,70 @@ export class CreateProductComponent implements OnInit {
 
     this.productId = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.productId);
-    this.productService.getProduct(this.productId).subscribe((data) => {
-      console.log(data);
-      this.productData = data;
-    })
+    if (this.productId) {
+      this.productService.getProduct(this.productId).subscribe((data) => {
+        console.log(data);
+        this.productData = data;
+      })
+    }
+
+    this.productService.getSettingModes().subscribe((value) => {
+      this.modes = value[0];
+      console.log(this.modes);
+      this.editMode = this.modes.edit;
+      this.createMode = this.modes.create;
+      this.deleteMode = this.modes.delete
+      this.searchMode = this.modes.search
+
+      console.log(this.editMode);
+      console.log(this.createMode);
+      console.log(this.searchMode);
+      console.log(this.deleteMode);
+    });
 
 
-    
-    
+
+
+
   }
 
 
 
-  saveProduct(){
-    if(this.productId == null){
+  saveProduct() {
+    // if (this.productId == null) {
+
+    if(this.createMode){
       console.log(this.createProductForm);
     this.productService.createProduct(this.createProductForm.value);
     this.createProductForm.reset();
     // this.successMessage = this.productService.createProductMessage;
     // console.log(this.successMessage);
     this.productService.isCreatedError.subscribe((isError) => {
-      if(!isError){
+      if (!isError) {
         this.successMessage = 'Product Added Successfully :-)';
       }
       setTimeout(() => {
         this.successMessage = '';
-      },3000)
+      }, 3000)
     })
     }
     else {
-      this.editProduct(this.createProductForm.value, this.productId);
+      this.successMessage = "Sorry, You don't have the access to edit";
+      setTimeout(() => {
+        this.successMessage = "";
+      }, 3000);
+      
     }
     
+    // }
+    // else {
+    //   this.editProduct(this.createProductForm.value, this.productId);
+    // }
+
   }
 
-  onCancel(){
-    if(this.createProductForm.valid){
+  onCancel() {
+    if (this.createProductForm.valid) {
       alert("Are you sure you want to leave?");
     }
     this.router.navigate(['/homescreen']);
@@ -101,30 +135,58 @@ export class CreateProductComponent implements OnInit {
   // }
 
 
-  addInputTags(){
-    if(this.addInputTagButtonClicked < 9){
+  addInputTags() {
+    if (this.addInputTagButtonClicked < 9) {
       (<FormArray>this.createProductForm.get('tags')).push(new FormControl(null));
       this.addInputTagButtonClicked++;
     }
-    else{
+    else {
       this.successMessage = "No More Tags can be added."
       setTimeout(() => {
         this.successMessage = "";
-      },2000);
+      }, 2000);
     }
-    
+
   }
-  editProduct(data: IProduct, id: string){
-    console.log(data);
-    this.productService.updateProduct(data, id).subscribe((result) => {
-      if(result){
-        this.successMessage = "Product has been updated successfully :-)";
-      }
+  editProduct() {
+    // this.modes.array.forEach(mode => {
+    //   editMode = mode.edit
+    // });
+    // console.log(editMode);
+    // if(editMode){
+
+    // console.log(this.editMode);
+    // console.log(this.createMode);
+    // console.log(this.searchMode);
+    // console.log(this.deleteMode);
+
+    if (this.editMode) {
+      this.productService.updateProduct(this.createProductForm.value, this.productId).subscribe((result) => {
+        if (result) {
+          this.successMessage = "Product has been updated successfully :-)";
+        }
+        setTimeout(() => {
+          this.successMessage = "";
+        }, 3000);
+      })
+      this.productId = null;
+    }
+    else {
+      this.successMessage = "Sorry, You don't have the access to edit";
       setTimeout(() => {
         this.successMessage = "";
       }, 3000);
-    })
-    this.productId = null;
+      
+    }
+
+    setTimeout(()=> {
+      this.router.navigate(['/homescreen']);
+    }, 3000)
+
+
+
     
+
   }
+
 }

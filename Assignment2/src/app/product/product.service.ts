@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResourceLoader } from '@angular/compiler';
 import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IProduct } from '../shared/data-types';
+import { IModes, IProduct } from '../shared/data-types';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,26 @@ export class ProductService {
 
   updateProduct(product: IProduct, id: string){
     return this.http.put(`http://localhost:3000/products/${id}`,product);
+  }
+
+  filterProducts(query: string){
+    return this.http.get(`http://localhost:3000/products?q=${query}`);
+  }
+
+  saveSettingModes(data: IModes){
+    this.http.post('http://localhost:3000/modes', data, { observe: 'response' }).subscribe((value) => {
+      console.log(value);
+     })
+  }
+
+  getSettingModes(){
+    return this.http.get('http://localhost:3000/modes');
+  }
+
+  deleteSettingsModes(id: string){
+    this.http.delete(`http://localhost:3000/modes/${id}`).subscribe((value) => {
+
+    });
   }
 
 }

@@ -4,7 +4,11 @@
     <div class="searchbar">
         <input type="text" class="searchbox" placeholder="Search here.." [(ngModel)]="searchkeyWord">
         <button class="button-icon" (click)="search()">Search</button>
-        <input type="text" class="searchbox" placeholder="Search here through RXJX..">
+
+        <form [formGroup]="searchbox2">
+            <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel formControlName="query">
+        </form>
+
         <ng-container *ngIf="isAnyCheckboxTicked || products.length != 0">
             <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete Products</button>
         </ng-container>

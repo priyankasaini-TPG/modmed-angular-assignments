@@ -1,8 +1,9 @@
 import { AfterContentChecked, Component, DoCheck, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { elementAt } from 'rxjs';
+import { debounceTime, distinctUntilChanged, elementAt, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/product/product.service';
-import { IProduct } from 'src/app/shared/data-types';
+import { IModes, IProduct } from 'src/app/shared/data-types';
 
 @Component({
   selector: 'app-home-menu',
@@ -18,14 +19,27 @@ export class HomeMenuComponent implements OnInit {
   productDeleteMessage = '';
   showDetails: boolean = false;
   searchkeyWord: string = '';
-  searchArray;
+  searchArray = [];
+  query: string = '';
+
+  searchbox2: FormGroup = new FormGroup({
+    query: new FormControl('')
+  })
+
+
+  modes: IModes;
+  editMode: boolean = true;
+  createMode: boolean = true;
+  searchMode: boolean = false;
+  deleteMode: boolean = true;
 
 
 
   constructor(private productService: ProductService, private router: Router){
-
-  }
-  ngOnInit() {
+  
+    
+    }
+  ngOnInit(): void {
     this.list();
     // this.productService.productList.subscribe((value) => {
     //   console.log(value);
@@ -34,6 +48,22 @@ export class HomeMenuComponent implements OnInit {
     // this.productService.productList;
     // console.log(this.products);
     // console.log(this.productService.productList)
+
+    this.productService.getSettingModes().subscribe((value) => {
+      this.modes = value[0];
+      console.log(this.modes);
+      this.editMode = this.modes.edit;
+      this.createMode = this.modes.create;
+      this.deleteMode = this.modes.delete
+      this.searchMode = this.modes.search
+
+      console.log(this.editMode);
+      console.log(this.createMode);
+      console.log(this.searchMode);
+      console.log(this.deleteMode);
+    });
+
+    
   }
 
 
@@ -66,7 +96,9 @@ export class HomeMenuComponent implements OnInit {
 
 
   deleteSelectedProducts(){
-    this.checkboxTickedidArray = Object.keys(this.isAnyCheckboxTicked);
+
+    if(this.deleteMode){
+      this.checkboxTickedidArray = Object.keys(this.isAnyCheckboxTicked);
     this.checkboxTickedidArray.forEach(element => {
       this.productService.deleteProduct(element);
       this.productService.isDeletedError.subscribe((result) => {
@@ -79,6 +111,15 @@ export class HomeMenuComponent implements OnInit {
     });
     this.isAnyCheckboxTicked = {};
     this.list();
+    }
+    else {
+      this.productDeleteMessage = "Sorry, You don't have the access to edit";
+      setTimeout(() => {
+        this.productDeleteMessage = "";
+      }, 3000);
+    }
+
+    
     // this.isAnyCheckboxTicked
   }  
 
@@ -200,6 +241,8 @@ export class HomeMenuComponent implements OnInit {
   //     })
  //   }
  // }
+
+
 
 
 

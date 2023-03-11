@@ -1,1 +1,35 @@
-<app-hamburger></app-hamburger>
+<div class="settings">
+    <app-hamburger></app-hamburger>
+    <div class="settings-container">
+        <h1>Settings</h1>
+
+        <form #settingsForm="ngForm" (ngSubmit)="save(settingsForm.value)">
+            <div>
+                <label name="edit">Allow Edit</label>
+                <input type="checkbox" for="edit" name="edit" [(ngModel)]="edit">
+            </div>
+
+            <div>
+                <label name="create">Allow Create</label>
+                <input type="checkbox" for="create" name="create" [(ngModel)]="create">
+            </div>
+
+            <div>
+                <label name="search">Allow Product Search</label>
+                <input type="checkbox" for="search" name="search" [(ngModel)]="search">
+            </div>
+
+            <div>
+                <label name="delete">Allow Multiple Delete</label>
+                <input type="checkbox" for="delete" name="delete" [(ngModel)]="delete">
+            </div>
+
+            <p>
+                <input type="submit" value="Save">
+                <input type="button" value="Reset" (click)="reset()">
+            </p>
+
+        </form>
+    </div>
+
+</div>
