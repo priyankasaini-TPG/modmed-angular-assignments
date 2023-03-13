@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogin, ISignUp } from 'src/app/shared/data-types';
 import { SignupService } from 'src/app/shared/header/services/signup.service';
@@ -17,15 +17,13 @@ export class SignupComponent implements OnInit{
   password = '';
   email = '';
 
-
   constructor(private signupService: SignupService, private router: Router){
 
   }
 
   ngOnInit(): void {
     this.signupService.reloadSignup();
-    this.userType = this.signupService.userType;
-    
+    this.userType = this.signupService.userType;  
   }
 
   signUp(data: ISignUp){
@@ -54,17 +52,11 @@ export class SignupComponent implements OnInit{
       this.userType = 'admin';
     }
     if(localStorage.getItem(`signup-${this.userType}`)){
-      if(this.userType === 'admin'){
+      if(this.userType === 'admin')
         this.router.navigate(['/admin-setting']);
-        // this.signupService.isALogin = true;
-      }
-      else {
-        this.router.navigate(['/homescreen']);
-        // this.signupService.isULogin = true;
-      }
+      else 
+        this.router.navigate(['/homescreen']); 
     }
-  }
-
-  
+  }  
 
 }

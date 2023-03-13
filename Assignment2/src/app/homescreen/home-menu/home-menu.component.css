@@ -15,10 +15,7 @@ h1 {
     justify-content: space-around;
 }
 
-
 .deleteButton {
-
-    right: 0;
     padding: 7px 10px;
     background-color: rgb(196, 3, 3);
     height: 30px;
@@ -32,7 +29,6 @@ h1 {
 
 .deleteButton:hover {
     background-color: rgba(196, 3, 3, 0.648);
-
 }
 
 img {
@@ -44,9 +40,6 @@ img {
     display: grid;
     grid-template-columns: 350px 1fr 200px;
     margin-bottom: 4px;
-    
-
-
 }
 
 .searchbox {
@@ -83,19 +76,8 @@ form .searchbox {
 
 .button-icon:hover {
     background-color: #38598ba8;
-
-
 }
 
-/* .action {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-} */
-
-@media screen and (min-width: 1350px) {
-    form .searchbox {
-        width: 400px;
-    }
+.pname:hover {
+    font-weight: bold;
 }

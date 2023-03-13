@@ -1,7 +1,5 @@
 .settings {
     display: flex;
-
-
 }
 
 .settings-container {
@@ -14,7 +12,6 @@
     margin-top: 50px;
     border-radius: 60px;
     align-items: center;
-
 }
 
 h1 {
@@ -43,15 +40,12 @@ form div input {
 
 p {
     text-align: center;
-    /* margin-top: 20px; */
     display: flex;
     justify-content: space-between;
     margin: 18px;
 }
 
 p input {
-    /* height: 30px;
-    width: 60px; */
     padding: 10px 30px;
     border: none;
     border-radius: 7px;
@@ -62,7 +56,6 @@ p input {
 p input[type='submit'] {
     background-color: #E7EAF6;
     color: #113f67;
-
 }
 
 p input[type='button']{

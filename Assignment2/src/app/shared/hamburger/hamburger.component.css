@@ -1,14 +1,6 @@
 .hamburger-container {
     background: #A2A8D3;
-    /* display: inline-block; */
-    /* height: max-content; */
-    bottom: 0;
-    /* margin-bottom: 0;min-height: initial; */
     min-height: 100%;
-    /* position: fixed; */
-    bottom: 0;
-    position: sticky;
-
 }
 
 .hamburger-container div {
@@ -25,7 +17,6 @@
 
 .hamburger-container div:hover {
     border:2px solid #113F67;
-
 }
 
 .hamburger-container div img {

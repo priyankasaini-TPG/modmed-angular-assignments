@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/data-types';
 import { ProductService } from '../product.service';
 
@@ -11,28 +11,26 @@ import { ProductService } from '../product.service';
 export class ProductDetailsComponent implements OnInit {
 
   product: IProduct;
-  // router: any;
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router){
+
+  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private router: Router) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.activatedRoute.params.subscribe((result: any) => {
       console.log(result);
       this.productService.getProduct(result.id).subscribe((data) => {
         this.product = data;
-      })
+      });
     });
-    }
+  }
 
-    removeProduct(id){
-      let result: boolean = confirm("Are you sure that you want to remove this item?");
-      if(result){
-        this.productService.deleteProduct(id);
-        this.router.navigate(['/homescreen']);
-  
-      }
+  removeProduct(id) {
+    let result: boolean = confirm("Are you sure that you want to remove this item?");
+    if (result) {
+      this.productService.deleteProduct(id);
+      this.router.navigate(['/homescreen']);
     }
-    
-  
+  }
+
 }

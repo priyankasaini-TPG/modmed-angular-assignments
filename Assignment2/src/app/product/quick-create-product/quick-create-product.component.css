@@ -18,7 +18,6 @@ h1 {
     color: #113f67;
     margin-top: 20px;
     margin-bottom: 30px;
-
 }
 
 .form-container {
@@ -48,7 +47,6 @@ h1 {
     background-color: #F10238;
 }
 
-
 .input-button:hover[type="submit"] {
     background-color: #02a1449e;
 }
@@ -59,14 +57,6 @@ h1 {
 
 @media screen and (max-width: 550px) {
     .quick-create-container {
-        background-color: #E7EAF6;
-        width: 500px;
         padding: 80px 30px;
-        display: flex;
-        margin: auto;
-        flex-direction: column;
-        margin-top: 50px;
-        border-radius: 100px;
-        align-items: center;
     }
 }

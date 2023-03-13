@@ -1,23 +1,25 @@
 <div class="home-container">
     <h1>List of all the Products</h1>
     <p class="message-p">{{ productDeleteMessage }}</p>
+
     <div class="searchbar">
         <div class="searchbox1">
             <input type="text" class="searchbox" placeholder="Search here.." [(ngModel)]="searchkeyWord">
             <button class="button-icon" (click)="search()">Search</button>
         </div>
-        
 
         <form [formGroup]="searchbox2">
-            <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel formControlName="query">
+            <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel
+                formControlName="query">
         </form>
 
         <ng-container *ngIf="isAnyCheckboxTicked || products.length != 0">
-            <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete Products</button>
+            <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete
+                Products</button>
         </ng-container>
     </div>
-    
-    
+
+
     <table>
         <thead>
             <tr>
@@ -29,8 +31,10 @@
                 <th class="stockth">
                     STOCK
                     <div>
-                        <img (click)="descendingOrder()" src="https://cdn.iconscout.com/icon/free/png-512/sort-ascending-3602979-3005186.png?f=avif&w=256">
-                        <img (click)="ascendingOrder()" src="https://cdn.iconscout.com/icon/free/png-512/sort-descending-3602980-3005187.png?f=avif&w=256">
+                        <img (click)="descendingOrder()"
+                            src="https://cdn.iconscout.com/icon/free/png-512/sort-ascending-3602979-3005186.png?f=avif&w=256">
+                        <img (click)="ascendingOrder()"
+                            src="https://cdn.iconscout.com/icon/free/png-512/sort-descending-3602980-3005187.png?f=avif&w=256">
                     </div>
                 </th>
                 <th>EXPIRY DATE</th>
@@ -62,7 +66,7 @@
             <tr *ngFor="let product of searchArray; index as i">
                 <td class="sno">{{ i+1 }}.</td>
                 <td><input type="checkbox" class="checkbox"></td>
-                <td routerLink="/product-details/{{product.id}}">{{ product.pname }}</td>
+                <td class="pname" routerLink="/product-details/{{product.id}}">{{ product.pname }}</td>
                 <td>{{ product.heading }}</td>
                 <td>{{ product.subheading }}</td>
                 <td>{{ product.stock }}</td>
@@ -75,8 +79,5 @@
                 </td>
             </tr>
         </tbody>
-
-        
-        
     </table>
 </div>

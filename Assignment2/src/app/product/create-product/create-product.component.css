@@ -8,7 +8,6 @@
     margin-top: 50px;
     border-radius: 100px;
     align-items: center;
-
 }
 
 .form-container {
@@ -25,8 +24,7 @@ h1 {
 
 .form-container div {
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;   
 }
 
 .input-form {
@@ -36,7 +34,6 @@ h1 {
 
 .tags .input-form {
     margin-bottom: 4px;
-
 }
 
 .subheading {
@@ -60,7 +57,6 @@ span {
 
 span:hover {
     background-color: #a2a8d3a8;
-
 }
 
 .input-button {
@@ -79,8 +75,6 @@ span:hover {
 .input-button[type="button"]{
     background-color: #F10238;
 }
-
-
 
 .input-button:hover[type="submit"] {
     background-color: #02a1449e;

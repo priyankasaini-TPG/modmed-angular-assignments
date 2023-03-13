@@ -23,12 +23,8 @@ const appRoute: Routes = [
     {
         path: "homescreen",
         component: HomescreenComponent,
-        // canActivate: [LoginauthGuard]
+        canActivate: [LoginauthGuard]
     },
-    // {
-    //     path: "admin-signup",
-    //     component: SignupComponent
-    // },
     {
         path: "admin-setting",
         component: SettingComponent,

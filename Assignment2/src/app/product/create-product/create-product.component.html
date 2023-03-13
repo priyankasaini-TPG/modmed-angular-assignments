@@ -1,28 +1,30 @@
 <div class="create-container">
-    <p class="message-p">{{ successMessage }}</p>
-
 
     <div *ngIf="productId === null; else elseblock">
+        <p class="message-p">{{ successMessage }}</p>
 
         <h1>Create Product Here!</h1>
-
         <form class="form-container" [formGroup]="createProductForm" (ngSubmit)="saveProduct()">
             <div>
                 <input type="text" placeholder="Enter Product Name.." class="input-form" formControlName="pname">
                 <input type="text" placeholder="Enter Expiry Date.." class="input-form" onfocus="(this.type = 'date')"
                     onblur="(this.type = 'text')" formControlName="expiry">
             </div>
+
             <div>
                 <input type="number" placeholder="No. of items in th stock.." class="input-form"
                     formControlName="stock">
                 <input type="text" placeholder="Enter the Heading.." class="input-form" formControlName="heading">
             </div>
+
             <div>
                 <input type="text" placeholder="Enter the Subheading.." class="input-form subheading"
                     formControlName="subheading">
             </div>
+
             <textarea type="textarea" placeholder="Enter the Product Description.." class="textarea-form"
                 formControlName="description"></textarea>
+
             <div>
                 <input type="text" placeholder="Minimum days to deliver.." class="input-form"
                     onfocus="(this.type = 'date')" onblur="(this.type = 'text')" formControlName="mindays">
@@ -35,9 +37,9 @@
                     <input type="text" placeholder="Tags.." class="input-form input-tags" formControlName="{{i}}">
                 </div>
             </div>
-            <span (click)="addInputTags()">Add Tags +</span>
-            <p class="error-p">{{ successMessage }}</p>
 
+            <span (click)="addInputTags()">Add Tags +</span>
+            <p class="error-p" *ngIf="addInputTagButtonClicked >= 9">{{errorMessage}}</p>
 
 
             <div>
@@ -46,13 +48,10 @@
             </div>
 
         </form>
-
-
     </div>
 
-
     <ng-template #elseblock>
-        
+        <p class="message-p">{{ successMessage }}</p>
         <h1>Edit Product Here!</h1>
         
         <form class="form-container" [formGroup]="createProductForm" (ngSubmit)="editProduct()">
@@ -62,18 +61,22 @@
                 <input type="text" placeholder="Enter Expiry Date.." class="input-form" onfocus="(this.type = 'date')"
                     onblur="(this.type = 'text')" formControlName="expiry" [(ngModel)]="productData.expiry">
             </div>
+
             <div>
                 <input type="number" placeholder="No. of items in th stock.." class="input-form" formControlName="stock"
                     [(ngModel)]="productData.stock">
                 <input type="text" placeholder="Enter the Heading.." class="input-form" formControlName="heading"
                     [(ngModel)]="productData.heading">
             </div>
+
             <div>
                 <input type="text" placeholder="Enter the Subheading.." class="input-form subheading"
                     formControlName="subheading" [(ngModel)]="productData.subheading">
             </div>
+
             <textarea type="textarea" placeholder="Enter the Product Description.." class="textarea-form"
                 formControlName="description" [(ngModel)]="productData.description"></textarea>
+
             <div>
                 <input type="text" placeholder="Minimum days to deliver.." class="input-form"
                     onfocus="(this.type = 'date')" onblur="(this.type = 'text')" formControlName="mindays"
@@ -89,20 +92,12 @@
                         [(ngModel)]="productData.tags[i]">
                 </div>
             </div>
+
             <span (click)="addInputTags()">Add Tags +</span>
+            <p class="error-p" *ngIf="addInputTagButtonClicked >= 9">{{errorMessage}}</p>
            
-
-
-            
             <input type="submit" value="Edit" class="input-button">
             
         </form>
-
     </ng-template>
-
-
-
-
-
-
 </div>

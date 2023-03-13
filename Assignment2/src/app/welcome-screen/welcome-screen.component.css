@@ -27,9 +27,8 @@ h3 {
 }
 
 input {
-    /* margin: 0px  5px; */
-    appearance: none;
-    background-color: #fff;
+  appearance: none;
+  background-color: #fff;
   margin: 0.3em 0.3em;
   font: inherit;
   color: currentColor;
@@ -40,7 +39,6 @@ input {
   transform: translateY(-0.075em);
   display: grid;
   place-content: center;
-
 }
 
 label {
@@ -49,7 +47,6 @@ label {
     gap: 0.5em;
     margin-bottom: 0.2em;
 }
-
 
 label:hover {
     font-weight: bold;

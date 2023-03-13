@@ -8,7 +8,7 @@ import { SignupService } from '../header/services/signup.service';
 })
 export class HamburgerComponent implements OnInit{
 
-  userType: string;
+  userType: string = '';
 
   constructor(private signupService: SignupService){
 
