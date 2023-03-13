@@ -1,56 +1,79 @@
 {
   "signup-admin": [
     {
-      "username": "",
-      "password": "",
-      "email": "",
+      "username": "priyankasaini",
+      "password": "0987",
+      "email": "priyanka@abc",
       "id": 1
+    },
+    {
+      "username": "test Admin",
+      "password": "0987",
+      "email": "0987",
+      "id": 2
+    },
+    {
+      "username": "test",
+      "password": "test",
+      "email": "test",
+      "id": 3
+    },
+    {
+      "username": "mm",
+      "password": "mm",
+      "email": "mm",
+      "id": 4
     }
   ],
   "signup-user": [
     {
-      "username": "",
-      "password": "",
-      "email": "",
+      "username": "Anurag Saini",
+      "password": "0987",
+      "email": "anu@gmail.com",
       "id": 1
     },
     {
-      "username": "",
-      "password": "",
-      "email": "",
+      "username": "test",
+      "password": "test",
+      "email": "test",
       "id": 2
     },
     {
-      "username": "",
-      "password": "",
-      "email": "",
+      "username": "test",
+      "password": "test",
+      "email": "test",
       "id": 3
     }
   ],
   "products": [
     {
-      "pname": "anu",
-      "expiry": "2023-03-09",
-      "stock": 45,
-      "heading": "dd",
-      "subheading": "ss",
+      "pname": "nnn",
+      "expiry": "2023-03-08",
+      "stock": 77,
+      "heading": null,
+      "subheading": null,
       "tags": [
-        "sd",
-        "dsd"
+        null
       ],
-      "description": "sdd",
-      "mindays": "2023-04-07",
-      "maxdays": "2023-04-08",
-      "id": 2
+      "description": null,
+      "mindays": null,
+      "maxdays": null,
+      "id": 5
+    },
+    {
+      "pname": "dsd",
+      "expiry": "2023-03-02",
+      "stock": 3,
+      "id": 6
     }
   ],
   "modes": [
     {
       "edit": true,
-      "create": false,
+      "create": true,
       "search": true,
       "delete": false,
-      "id": 1
+      "id": 2
     }
   ],
   "abc": [],

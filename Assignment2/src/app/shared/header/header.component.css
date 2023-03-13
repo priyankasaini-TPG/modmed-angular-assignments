@@ -32,3 +32,34 @@
     margin-right: 10px;
 }
 
+@media screen and (max-width: 550px){
+    .header-container h3 {
+        font-size: 25px;
+    }
+    
+    .header-container ul {
+        font-size: 13px;
+    }
+
+    .header-container img {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .header-container h3 {
+        font-size: 15px;
+    }
+    
+    .header-container ul {
+        font-size: 10px;
+    }
+
+    .header-container img {
+        height: 20px;
+        width: 20px;
+    }
+
+}
+

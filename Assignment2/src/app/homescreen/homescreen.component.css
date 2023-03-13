@@ -1,3 +1,13 @@
 .homescreen-container {
     display: flex;
 }
+
+.home-menu {
+    margin: 0 2%;
+}
+
+@media screen and (max-width: 1150px) {
+    /* .home-menu {
+        margin: 0 ;
+    } */
+}

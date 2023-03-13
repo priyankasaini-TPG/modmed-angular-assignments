@@ -1,7 +1,7 @@
 .signup-container, .login-container {
     background-color: #E7EAF6;
     width: 500px;
-    padding: 100px;
+    padding: 125px 100px;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -10,10 +10,27 @@
     align-items: center;
 }
 
+.currentuser {
+    color: #113F67;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #A2A8D3;
+    font-weight: bold;
+}
+
+.span {
+    text-decoration: underline;
+}
+
+.span:hover {
+    font-weight: bold;
+}
+
 h1 {
     color: #113F67;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 30px;
+
 }
 
 .form-container {
@@ -21,7 +38,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     margin: auto;
-    width: 300px;
+    /* width: 300px; */
     justify-content: center;
 }
 
@@ -30,10 +47,54 @@ h1 {
     color: #E7EAF6;
 }
 
+.input-button:hover {
+    background-color: #113f67cc;
+}
+
+
 .login-container p {
     color: red;
     background-color: rgb(252, 222, 222);
     width: 100%;
     text-align: center;
     font-size: 15px;
+}
+
+.signup-container a, .login-container a {
+    font-size: 16px;
+    color: #113F67;
+    padding: 10px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 750px){
+    .signup-container, .login-container {
+        width: 400px;
+        padding: 100px 60px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .signup-container, .login-container {
+        width: 300px;
+        padding: 100px 5px;
+        
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .signup-container a, .login-container a {
+        /* padding-top: 30px; */
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .signup-container, .login-container {
+        width: 250px;
+        padding: 100px 2px;
+        
+    }
 }

@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { SignupService } from './services/signup.service';
 
@@ -7,50 +7,45 @@ import { SignupService } from './services/signup.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements AfterContentChecked{
+export class HeaderComponent implements AfterContentChecked, DoCheck{
 
   menuType: string ;
   adminName: string = '';
-
+  showAdmin: boolean = false;
+  
   constructor(private signupService: SignupService, private router: Router){
 
   }
 
-  ngAfterContentChecked(): void{
-    this.menuType = this.signupService.menuType;
+  ngOnInit(): void{
+    this.router.events.subscribe((value: any) => {
+      if(value.url && !value.url.includes('/welcome-screen') || !value.url.includes('/sign-up')){
+        this.showAdmin = true;
+      }
+      else {
+        this.showAdmin = false;
+      }
+    })
+  }
+
+  ngDoCheck(){
     this.adminName = this.signupService.adminName;
+  }
+
+  ngAfterContentChecked(): void{
+    this.menuType = this.signupService.userType;
   }
 
   logout(){
     this.signupService.logoutUser();
   }
-  // ngOnInit(): void{
-  //   this.menuType = this.signupService.userType;
-  //   this.router.events.subscribe((val: any) => {
-  //     if(val.url){
-  //       console.warn(val.url);
-  //       if(localStorage.getItem(`signup-${this.menuType}`) && val.url.includes('admin')){
-  //         console.log("inside admin area signup");
-  //         this.menuType = 'admin';
-  //         if(localStorage.getItem(`signup-${this.menuType}`)){
-  //           let admin = localStorage.getItem(`signup-${this.menuType}`);
-  //           let adminData = admin && JSON.parse(admin);
-  //           this.adminName = adminData.username+'(Admin)';
-  //         }
-  //       }
-  //       else {
-  //         console.log("outside admin area signup");
-  //         this.menuType = 'user';
-  //         let admin = localStorage.getItem(`signup-${this.menuType}`);
-  //         let adminData = admin && JSON.parse(admin);
-  //         this.adminName = adminData.username;
-  //       }
-  //     }
-  //   });
-  // }
 
+  userLoggedIn(){
+    return localStorage.getItem('signup-user')
+  }
 
-
-
+  adminLoggedIn(){
+    return localStorage.getItem('signup-admin')
+  }
 
 }

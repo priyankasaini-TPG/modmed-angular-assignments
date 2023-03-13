@@ -4,19 +4,15 @@
         <h3>Product-List App</h3>
     </div>
 
-    <!-- <div [ngSwitch]="menuType"> -->
-        <ul *ngIf="menuType">
-            <li>{{ adminName }}</li>
-            <li routerLink="/sign-up" (click)="logout()">Logout</li>
+    <ul *ngIf="userLoggedIn() && showAdmin && menuType==='user'; else my">
+        <li>{{ adminName }}</li>
+        <li (click)="logout()">Logout</li>
+    </ul>
+
+    <ng-template #my>
+        <ul *ngIf="adminLoggedIn() && showAdmin && menuType==='admin'">
+            <li>{{ adminName +' (Admin)' }}</li>
+            <li (click)="logout()">Logout</li>
         </ul>
-
-       
-        <!-- <ul *ngSwitchCase="'admin'">
-            <li>{{ adminName }}</li>
-            <li routerLink="/sign-up" (click)="logout()">Logout</li>
-        </ul> -->
-
-        <!-- <ul *ngSwitchDefault >
-        </ul> -->
-    
+    </ng-template> 
 </div>

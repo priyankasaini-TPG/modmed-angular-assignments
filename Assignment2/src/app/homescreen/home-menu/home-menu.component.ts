@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, elementAt, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/product/product.service';
 import { IModes, IProduct } from 'src/app/shared/data-types';
+import { SignupService } from 'src/app/shared/header/services/signup.service';
 
 @Component({
   selector: 'app-home-menu',
@@ -35,7 +36,7 @@ export class HomeMenuComponent implements OnInit {
 
 
 
-  constructor(private productService: ProductService, private router: Router){
+  constructor(private productService: ProductService, private router: Router, private signupService: SignupService){
   
     
     }
@@ -97,7 +98,7 @@ export class HomeMenuComponent implements OnInit {
 
   deleteSelectedProducts(){
 
-    if(this.deleteMode){
+    if(this.deleteMode || this.signupService.userType === 'admin'){
       this.checkboxTickedidArray = Object.keys(this.isAnyCheckboxTicked);
     this.checkboxTickedidArray.forEach(element => {
       this.productService.deleteProduct(element);

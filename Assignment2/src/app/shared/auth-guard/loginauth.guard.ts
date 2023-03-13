@@ -15,7 +15,7 @@ export class LoginauthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('signup')) return true;
+      if(localStorage.getItem(`signup-${this.signupService.userType}`)) return true;
     return this.signupService.isLoggedIn;
   }
   

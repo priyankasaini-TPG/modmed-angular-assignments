@@ -2,6 +2,7 @@ import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angul
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IModes, IProduct } from 'src/app/shared/data-types';
+import { SignupService } from 'src/app/shared/header/services/signup.service';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -17,14 +18,16 @@ export class CreateProductComponent implements OnInit {
   addInputTagButtonClicked: number = 0;
   productId: string;
   productData: undefined | IProduct;
+
+  
   modes: IModes;
   editMode: boolean = true;
-  createMode: boolean = true;;
+  createMode: boolean = true;
   searchMode: boolean = false;
-  deleteMode: boolean = true;;
+  deleteMode: boolean = true;
 
 
-  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute, private signupService: SignupService) {
 
   }
 
@@ -73,13 +76,14 @@ export class CreateProductComponent implements OnInit {
 
 
   }
+  
 
 
 
   saveProduct() {
     // if (this.productId == null) {
 
-    if(this.createMode){
+    if(this.createMode || this.signupService.userType === 'admin'){
       console.log(this.createProductForm);
     this.productService.createProduct(this.createProductForm.value);
     this.createProductForm.reset();
@@ -160,7 +164,7 @@ export class CreateProductComponent implements OnInit {
     // console.log(this.searchMode);
     // console.log(this.deleteMode);
 
-    if (this.editMode) {
+    if (this.editMode || this.signupService.userType === 'admin') {
       this.productService.updateProduct(this.createProductForm.value, this.productId).subscribe((result) => {
         if (result) {
           this.successMessage = "Product has been updated successfully :-)";
@@ -181,11 +185,7 @@ export class CreateProductComponent implements OnInit {
 
     setTimeout(()=> {
       this.router.navigate(['/homescreen']);
-    }, 3000)
-
-
-
-    
+    }, 3000) 
 
   }
 

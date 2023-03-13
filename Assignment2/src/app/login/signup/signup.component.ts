@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogin, ISignUp } from 'src/app/shared/data-types';
 import { SignupService } from 'src/app/shared/header/services/signup.service';
@@ -12,6 +12,10 @@ export class SignupComponent implements OnInit{
 
   showLogin: boolean = false;
   authError: string = '';
+  userType: string = '';
+  username = '';
+  password = '';
+  email = '';
 
 
   constructor(private signupService: SignupService, private router: Router){
@@ -20,6 +24,7 @@ export class SignupComponent implements OnInit{
 
   ngOnInit(): void {
     this.signupService.reloadSignup();
+    this.userType = this.signupService.userType;
     
   }
 
@@ -37,6 +42,27 @@ export class SignupComponent implements OnInit{
         this.authError = "Email or password is not correct.";
       }
     });
+  }
+
+  switch(type: string){
+    if(this.userType === 'admin'){
+      this.signupService.userType = 'user';
+      this.userType = 'user';
+    }
+    else {
+      this.signupService.userType = 'admin';
+      this.userType = 'admin';
+    }
+    if(localStorage.getItem(`signup-${this.userType}`)){
+      if(this.userType === 'admin'){
+        this.router.navigate(['/admin-setting']);
+        // this.signupService.isALogin = true;
+      }
+      else {
+        this.router.navigate(['/homescreen']);
+        // this.signupService.isULogin = true;
+      }
+    }
   }
 
   

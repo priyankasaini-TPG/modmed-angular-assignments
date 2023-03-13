@@ -1,3 +1,7 @@
+.home-container {
+    width: 100%;
+}
+
 h1 {
     text-align: center;
     color: #113F67;
@@ -5,14 +9,16 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* ng-container {
+.stockth {
     display: flex;
-    justify-content: space-between;
-} */
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 
 .deleteButton {
-    margin-left: 95px;
-    /* right: 0; */
+
+    right: 0;
     padding: 7px 10px;
     background-color: rgb(196, 3, 3);
     height: 30px;
@@ -20,7 +26,6 @@ h1 {
     color: #E7EAF6;
     border: none;
     font-size: 12px;
-    margin-bottom: 4px;
 }
 
 img {
@@ -31,18 +36,24 @@ img {
 .searchbar {
     display: flex;
     margin-bottom: 4px;
+    
+
 
 }
 
 .searchbox {
     width: 250px;
-    height: 30px;
     border: 2px solid #113F67;
     background-color: #E7EAF6;
     border-radius: 15px 0px 0px 15px;
     padding: 10px;
-    margin-left: 4px;
     font-size: 14px;
+    height: 30px;
+}
+
+form .searchbox {
+    border-radius: 15px;
+    margin-left: 4px;
 }
 
 .button-icon {
@@ -54,4 +65,11 @@ img {
     color: #E7EAF6;
     padding: 5px;
     border-left: none;
+    height: 30px;
+}
+
+@media screen and (min-width: 1350px) {
+    form .searchbox {
+        width: 400px;
+    }
 }

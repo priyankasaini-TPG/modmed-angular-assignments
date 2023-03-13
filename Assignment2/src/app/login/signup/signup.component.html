@@ -1,22 +1,42 @@
 <div class="signup-container" *ngIf="!showLogin">
+    <a class="currentuser">You are currently 
+        <span *ngIf="userType === 'user'">User</span>
+        <span *ngIf="userType === 'admin'">Admin</span>
+    </a>
+    <div>
+        <a class="span" (click)="switch(userType)">Switch to
+            <span *ngIf="userType === 'admin'">User</span>
+            <span *ngIf="userType === 'user'">Admin</span>
+        </a>
+    </div>
     <h1>Sign-UP</h1>
     <form class="form-container" #signupForm="ngForm"  (ngSubmit)="signUp(signupForm.value)">
-        <input type="text" placeholder="Username" class="input-form" ngModel name="username">
-        <input type="password" placeholder="Password" class="input-form" ngModel name="password">
-        <input type="email" placeholder="Email" class="input-form" ngModel name="email">
-        <input type="submit" value="Sign-Up" class="input-button">
+        <input type="text" placeholder="Username" class="input-form" ngModel name="username" required>
+        <input type="password" placeholder="Password" class="input-form" ngModel name="password" required>
+        <input type="email" placeholder="Email" class="input-form" ngModel name="email" required>
+        <input type="submit" value="Sign-Up" class="input-button" [disabled]="!signupForm.valid">
     </form>
     <a (click)="showLogin=true">Already have an account. Click Here.</a>
 </div>
 
 <div class="login-container" *ngIf="showLogin">
     <p>{{ authError }}</p>
+    <a class="currentuser">You are currently 
+        <span *ngIf="userType === 'user'">User</span>
+        <span *ngIf="userType === 'admin'">Admin</span>
+    </a>
+    <div>
+        <a class="span" (click)="switch(userType)">Switch to
+            <span *ngIf="userType === 'admin'">User</span>
+            <span *ngIf="userType === 'user'">Admin</span>
+        </a>
+    </div>
     <h1>Login</h1>
     <form class="form-container" #loginForm="ngForm"  (ngSubmit)="login(loginForm.value)">
         <input type="email" placeholder="Email" class="input-form" ngModel name="email">
         <input type="password" placeholder="Password" class="input-form" ngModel name="password">
         <input type="submit" value="Login" class="input-button">
     </form>
-    <a (click)="showLogin=false">Don't have an account. Click here to create.</a>
+    <a (click)="showLogin=false">Don't have an account. Click here.</a>
 </div>
 
