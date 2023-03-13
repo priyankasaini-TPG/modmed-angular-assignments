@@ -1,7 +1,9 @@
 <div class="create-container">
+    <p class="message-p">{{ successMessage }}</p>
 
-    <p>{{ successMessage }}</p>
+
     <div *ngIf="productId === null; else elseblock">
+
         <h1>Create Product Here!</h1>
 
         <form class="form-container" [formGroup]="createProductForm" (ngSubmit)="saveProduct()">
@@ -34,6 +36,8 @@
                 </div>
             </div>
             <span (click)="addInputTags()">Add Tags +</span>
+            <p class="error-p">{{ successMessage }}</p>
+
 
 
             <div>
@@ -86,6 +90,8 @@
                 </div>
             </div>
             <span (click)="addInputTags()">Add Tags +</span>
+           
+
 
             
             <input type="submit" value="Edit" class="input-button">

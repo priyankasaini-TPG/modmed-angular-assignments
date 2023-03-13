@@ -33,6 +33,10 @@ form div {
     font-size: 15px;
 }
 
+form div:hover {
+    background-color: #556e94;
+}
+
 form div input {
     margin-left: 20px;
 }
@@ -64,4 +68,12 @@ p input[type='submit'] {
 p input[type='button']{
     background-color: #A2A8D3;
     color: #113f67;
+}
+
+p input:hover[type='submit'] {
+    background-color: #e7eaf69a;
+}
+
+p input:hover[type='button']{
+    background-color: #a2a8d37c;
 }

@@ -1,9 +1,12 @@
 <div class="home-container">
     <h1>List of all the Products</h1>
-    <p>{{ productDeleteMessage }}</p>
+    <p class="message-p">{{ productDeleteMessage }}</p>
     <div class="searchbar">
-        <input type="text" class="searchbox" placeholder="Search here.." [(ngModel)]="searchkeyWord">
-        <button class="button-icon" (click)="search()">Search</button>
+        <div class="searchbox1">
+            <input type="text" class="searchbox" placeholder="Search here.." [(ngModel)]="searchkeyWord">
+            <button class="button-icon" (click)="search()">Search</button>
+        </div>
+        
 
         <form [formGroup]="searchbox2">
             <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel formControlName="query">
@@ -66,7 +69,7 @@
                 <td class="nowrap">{{ product.expiry }}</td>
                 <td class="description">{{ product.description }}</td>
                 <td>{{ product.tags }}</td>
-                <td>
+                <td class="action">
                     <button class="edit" routerLink="/edit-product/{{product.id}}">Edit</button>
                     <button class="delete" (click)="removeProduct(product.id)">Delete</button>
                 </td>

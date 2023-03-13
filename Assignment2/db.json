@@ -47,24 +47,74 @@
   ],
   "products": [
     {
-      "pname": "nnn",
-      "expiry": "2023-03-08",
-      "stock": 77,
+      "pname": "ef",
+      "expiry": "2023-03-24",
+      "stock": 75,
+      "tags": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "description": "ggrgg grgr grgg",
+      "id": 11
+    },
+    {
+      "pname": "as",
+      "expiry": "2023-04-01",
+      "stock": 8,
+      "id": 12
+    },
+    {
+      "pname": "bb",
+      "expiry": "2023-03-03",
+      "stock": 9,
       "heading": null,
       "subheading": null,
       "tags": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "description": null,
       "mindays": null,
       "maxdays": null,
-      "id": 5
+      "id": 13
     },
     {
-      "pname": "dsd",
-      "expiry": "2023-03-02",
-      "stock": 3,
-      "id": 6
+      "pname": "laptop Hp",
+      "expiry": "2023-03-24",
+      "stock": 45,
+      "heading": "preimum",
+      "subheading": "super quality premium purchasce",
+      "tags": [
+        "laptop",
+        "hp",
+        "quality buy"
+      ],
+      "description": "this is the hp laptop. suitable for industries work.",
+      "mindays": "2023-03-31",
+      "maxdays": "2023-04-01",
+      "id": 14
+    },
+    {
+      "pname": "feff",
+      "expiry": "2023-03-17",
+      "stock": 45,
+      "id": 15
     }
   ],
   "modes": [

@@ -58,6 +58,11 @@ span {
     color: #113F67;
 }
 
+span:hover {
+    background-color: #a2a8d3a8;
+
+}
+
 .input-button {
     border: none;
     height: 40px;
@@ -78,11 +83,11 @@ span {
 
 
 .input-button:hover[type="submit"] {
-    background-color: #04b74f;
+    background-color: #02a1449e;
 }
 
 .input-button:hover[type="button"] {
-    background-color: #fd2759;
+    background-color: #f1023aa9;
 }
 
 

@@ -20,7 +20,7 @@
 </div>
 
 <div class="login-container" *ngIf="showLogin">
-    <p>{{ authError }}</p>
+    <p class="error-p">{{ authError }}</p>
     <a class="currentuser">You are currently 
         <span *ngIf="userType === 'user'">User</span>
         <span *ngIf="userType === 'admin'">Admin</span>

@@ -48,6 +48,15 @@ h1 {
     background-color: #F10238;
 }
 
+
+.input-button:hover[type="submit"] {
+    background-color: #02a1449e;
+}
+
+.input-button:hover[type="button"] {
+    background-color: #f1023aa9;
+}
+
 @media screen and (max-width: 550px) {
     .quick-create-container {
         background-color: #E7EAF6;

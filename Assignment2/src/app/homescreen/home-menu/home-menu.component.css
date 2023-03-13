@@ -26,6 +26,13 @@ h1 {
     color: #E7EAF6;
     border: none;
     font-size: 12px;
+    width: 60%;
+    margin-left: 0;
+}
+
+.deleteButton:hover {
+    background-color: rgba(196, 3, 3, 0.648);
+
 }
 
 img {
@@ -34,7 +41,8 @@ img {
 }
 
 .searchbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: 350px 1fr 200px;
     margin-bottom: 4px;
     
 
@@ -51,9 +59,14 @@ img {
     height: 30px;
 }
 
+.searchbox1 {
+    display: flex;
+}
+
 form .searchbox {
     border-radius: 15px;
     margin-left: 4px;
+    width: 90%;
 }
 
 .button-icon {
@@ -63,10 +76,23 @@ form .searchbox {
     border: 2px solid #113F67;
     background-color: #38598B;
     color: #E7EAF6;
-    padding: 5px;
+    padding: 6px;
     border-left: none;
     height: 30px;
 }
+
+.button-icon:hover {
+    background-color: #38598ba8;
+
+
+}
+
+/* .action {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+} */
 
 @media screen and (min-width: 1350px) {
     form .searchbox {
