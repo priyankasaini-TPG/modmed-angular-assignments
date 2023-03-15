@@ -78,6 +78,9 @@ export class CreateProductComponent implements OnInit {
         }, 3000)
       })
     }
+    else {
+      this.successMessage = 'Sorry, You dont have the access.';
+    }
   }
 
   onCancel() {
@@ -99,12 +102,16 @@ export class CreateProductComponent implements OnInit {
       this.productService.updateProduct(this.createProductForm.value, this.productId).subscribe((result) => {
         if (result) 
           this.successMessage = "Product has been updated successfully :-)";
-        setTimeout(() => {
-          this.successMessage = "";
-        }, 3000);
       })
       this.productId = null;
     }
+    else {
+      console.log('helo')
+      this.successMessage = 'Sorry, you dont have the access.';
+    }
+    setTimeout(() => {
+      this.successMessage = '';
+    },3000);
     this.router.navigate(['/homescreen']);
   }
 

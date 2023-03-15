@@ -79,15 +79,31 @@
       "mindays": null,
       "maxdays": null,
       "id": 16
+    },
+    {
+      "pname": "Dell Laptop",
+      "expiry": "2024-11-08",
+      "stock": 401,
+      "heading": "Office laptop",
+      "subheading": "Used for WFH",
+      "tags": [
+        "dell",
+        "laptop",
+        null
+      ],
+      "description": "It is a good quality laptop. Premium quality product.",
+      "mindays": null,
+      "maxdays": null,
+      "id": 17
     }
   ],
   "modes": [
     {
-      "edit": false,
-      "create": false,
-      "search": false,
+      "edit": true,
+      "create": true,
+      "search": true,
       "delete": false,
-      "id": 5
+      "id": 3
     }
   ],
   "abc": [],

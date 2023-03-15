@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IModes, IProduct } from '../shared/data-types';
 
 @Injectable({
@@ -45,9 +45,13 @@ export class ProductService {
     return this.http.put(`http://localhost:3000/products/${id}`,product);
   }
 
-  filterProducts(query: string){
-    return this.http.get(`http://localhost:3000/products?q=${query}`);
+  filterProducts(query: string): Observable<IProduct> {
+    return this.http.get<IProduct>(`http://localhost:3000/products?q=${query}`);
   }
+
+  // getSearches(): Observable<IProduct> {
+  //   return this.http.get<IProduct>('http://localhost:3000/products')
+  // }
 
   saveSettingModes(data: IModes){
     this.http.post('http://localhost:3000/modes', data, { observe: 'response' }).subscribe((value) => {

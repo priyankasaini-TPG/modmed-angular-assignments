@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, filter, pluck, startWith, Subject, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/product/product.service';
 import { IModes, IProduct } from 'src/app/shared/data-types';
 import { SignupService } from 'src/app/shared/header/services/signup.service';
@@ -21,16 +22,13 @@ export class HomeMenuComponent implements OnInit {
   searchkeyWord: string = '';
   searchArray = [];
   query: string = '';
-
-  searchbox2: FormGroup = new FormGroup({
-    query: new FormControl('')
-  });
-
+  searchbox2: FormGroup;
   modes: IModes;
   editMode: boolean = true;
   createMode: boolean = true;
   searchMode: boolean = false;
   deleteMode: boolean = true;
+  userType: string = '';
 
   constructor(private productService: ProductService, private router: Router, private signupService: SignupService) {
 
@@ -47,6 +45,33 @@ export class HomeMenuComponent implements OnInit {
       this.deleteMode = this.modes.delete;
       this.searchMode = this.modes.search;
     });
+
+    this.searchbox2 = new FormGroup({
+      query: new FormControl('')
+    });
+
+
+  }
+
+  ngAfterViewInit(): void {
+
+    if (this.searchMode || this.signupService.userType === 'admin') {
+      this.userType = 'admin';
+      const searchbox2Value = this.searchbox2.valueChanges;
+
+      searchbox2Value.pipe(
+        filter(() => this.searchbox2.valid),
+        pluck('query'),
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap(result => this.productService.filterProducts(result))
+
+      )
+        .subscribe(data => {
+          console.log(data);
+          this.products = data;
+        });
+    }
   }
 
   checkboxValueChanged(element, id: number) {
@@ -139,7 +164,7 @@ export class HomeMenuComponent implements OnInit {
   }
 
   search() {
-    let filteredProducts: IProduct[] = []; 
+    let filteredProducts: IProduct[] = [];
 
     this.productService.filterProducts(this.searchkeyWord).subscribe((result: any) => {
       console.log('Search Found!');

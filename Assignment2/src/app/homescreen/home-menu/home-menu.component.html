@@ -8,10 +8,14 @@
             <button class="button-icon" (click)="search()">Search</button>
         </div>
 
-        <form [formGroup]="searchbox2">
-            <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel
-                formControlName="query">
-        </form>
+        <div *ngIf="searchMode || userType === 'admin'">
+            <form [formGroup]="searchbox2">
+                <input type="text" class="searchbox" placeholder="Search here through RXJX.." ngModel
+                    formControlName="query">
+            </form>
+        </div>
+
+      
 
         <ng-container *ngIf="isAnyCheckboxTicked || products.length != 0">
             <button *ngIf="objectLength()" (click)="deleteSelectedProducts()" class="deleteButton">Delete
